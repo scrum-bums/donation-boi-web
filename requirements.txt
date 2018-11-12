@@ -1,6 +1,6 @@
 aiohttp==1.0.5
 asgi-redis==1.4.2
-asgiref==1.1.2
+asgiref==2.3.2
 async-timeout==2.0.0
 attrs==17.2.0
 autobahn==18.11.1
