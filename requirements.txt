@@ -28,6 +28,7 @@ dj-database-url==0.4.1
 Django==2.1.3
 django-admin-view-permission==1.1
 django-extensions==1.9.0
+django-heroku==0.3.1
 django-modelcluster==3.1
 django-taggit==0.22.1
 django-treebeard==4.1.2
@@ -96,8 +97,6 @@ tabulate==0.7.5
 termcolor==1.1.0
 terminado==0.8.1
 testpath==0.4.2
-torch==0.4.1
-torchvision==0.2.1
 tornado==5.1.1
 traitlets==4.3.2
 Twisted==17.5.0
