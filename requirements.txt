@@ -36,7 +36,7 @@ djangorestframework==3.6.4
 docutils==0.14
 entrypoints==0.2.3
 gunicorn==19.6.0
-html5lib==0.999999999
+html5lib==1.0.1
 hyperlink==18.0.0
 idna==2.6
 incremental==17.5.0
