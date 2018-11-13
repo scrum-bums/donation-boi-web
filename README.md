@@ -1,3 +1,14 @@
+# Getting setup locally
+1. Create a Python Virtualenv and activate it, following the instructions at https://github.gatech.edu/estrat6/trip-planner
+2. Run `pip install -r requirements.txt`
+3. Run `python manage.py migrate`
+4. Start the Django server locally using `python manage.py runserver 8000`
+5. Access the web app by visiting [localhost:8000](localhost:8000) in your web browser.
+
+# Deploying
+- The `master` branch auto-deploys to https://donation-boi-staging.herokuapp.com/
+- To deploy to the production site, access the Heroku pipeline and promote the staging build to production
+
 # Heroku Django Starter Template
 
 An utterly fantastic project starter template for Django 2.0.
