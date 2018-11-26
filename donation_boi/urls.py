@@ -1,4 +1,4 @@
-"""donation_boi_web URL Configuration
+"""donation_boi URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -16,9 +16,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from .views import *
+
 
 urlpatterns = [
-    path('', include('donation_boi.urls')),
-    path('', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls)
+    path('', StoreList.as_view())
 ]
