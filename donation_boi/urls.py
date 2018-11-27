@@ -16,9 +16,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import *
+from django.contrib.auth import views as auth_views
+from django.views.generic import RedirectView
+from donation_boi.views import *
 
 
 urlpatterns = [
-    path('', StoreList.as_view())
+    path('', RedirectView.as_view(pattern_name='stores', permanent=True), name="home"),
+    path('stores', StoreList.as_view(), name="stores"),
+    path('login', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path('logout', auth_views.auth_logout, name="logout")
 ]

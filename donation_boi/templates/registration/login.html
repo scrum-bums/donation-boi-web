@@ -1,0 +1,42 @@
+{% extends "donation_boi/base.html" %}
+{% load semanticui %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+    <div class="six wide column centered">
+        <div class="ui form large center aligned {% if form.errors or next and user.is_authenticated %}error{% endif %}">
+
+            <h1>Sign in to continue</h1>
+            <form method="post" action="{% url 'login' %}" class="log-in-form">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="ui error message">
+                        <p>Your username and password didn't match. Please try again.</p>
+                    </div>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <div class="ui error message">
+                            <p>Access denied.</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                <div class="required field">
+                    <label>Username</label>
+                    {{ form.username }}
+                </div>
+                <div class="required field">
+                    <label>Password</label>
+                    {{ form.password }}
+                </div>
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <div class="field">
+                    <input type="submit" class="ui button primary large" id="submit-btn" value="Continue"/>
+                </div>
+                <div class="field">
+                    <p class="text-center"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

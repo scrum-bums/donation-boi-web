@@ -1,5 +1,17 @@
-<ul>
-    {% for store in stores %}
-        <li>{{ store.name }}</li>
-    {% endfor %}
-</ul>
+{% extends "donation_boi/base.html" %}
+{% block title %}Stores{% endblock %}
+{% block content %}
+    <div class="eight wide column">
+        <h1>Stores</h1>
+        <ul>
+            {% for store in stores %}
+                <li>{{ store.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="four wide column">
+        {% if perms.store.can_add_store %}
+            <a class="ui button primary" href="#">Add store</a>
+        {% endif %}
+    </div>
+{% endblock %}

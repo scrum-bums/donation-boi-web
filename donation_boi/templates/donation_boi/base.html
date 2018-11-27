@@ -1,0 +1,25 @@
+{% load static %}
+{% load semanticui %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} | Donation Boi</title>
+    <link href="{% static "css/semantic.min.css" %}" type="text/css" rel="stylesheet">
+</head>
+<body>
+{% include "donation_boi/nav.html" %}
+<div class="ui grid container">
+    {% block content %}
+        This page has no content defined :(
+    {% endblock %}
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="{% static "js/semantic.min.js" %}"></script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>
+

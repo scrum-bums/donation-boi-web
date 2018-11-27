@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'donation_boi',
-    'donation_boi_web'
+    'donation_boi_web',
+    'semanticuiforms'
 ]
 
 MIDDLEWARE = [
@@ -135,6 +136,9 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL="/"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
