@@ -4,11 +4,12 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %} | Donation Boi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link href="{% static "semantic.min.css" %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 {% include "donation_boi/nav.html" %}
-<div class="ui grid container">
+<div class="ui grid container stackable doubling">
     {% block content %}
         This page has no content defined :(
     {% endblock %}
