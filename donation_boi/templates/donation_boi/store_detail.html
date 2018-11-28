@@ -1,0 +1,21 @@
+{% extends "donation_boi/base.html" %}
+{% block title %}Stores{% endblock %}
+{% block content %}
+    <div class="eight wide column">
+        <h1>{{ store.name }}</h1>
+        <ul>
+            <li><strong>Location: </strong> {{ store.address }} ({{ store.location_type }})</li>
+            <li><strong>URL: </strong> <a href="{{ store.website }}">{{ store.website }}</a></li>
+            <li><strong>Phone number: </strong>{{ store.phone_number }}</li>
+        </ul>
+        <em>As of: {{ store.updated_at }}</em>
+    </div>
+    <div class="four wide column">
+        {% if perms.store.can_edit_store %}
+            <a class="ui button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit store</a>
+        {% endif %}
+        {% if perms.store.can_delete_store %}
+                <a class="ui button" href="#">Delete store</a>
+            {% endif %}
+    </div>
+{% endblock %}
