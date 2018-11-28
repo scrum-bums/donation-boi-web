@@ -11,7 +11,7 @@
     </div>
     <div class="four wide column">
         {% if perms.store.can_add_store %}
-            <a class="ui button primary" href="#">Add store</a>
+            <a class="ui button primary" href="{% url 'admin:donation_boi_store_add' %}">Add store</a>
         {% endif %}
     </div>
 {% endblock %}

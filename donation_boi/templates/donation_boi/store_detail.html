@@ -15,7 +15,7 @@
             <a class="ui button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit store</a>
         {% endif %}
         {% if perms.store.can_delete_store %}
-                <a class="ui button" href="#">Delete store</a>
+                <a class="ui button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete store</a>
             {% endif %}
     </div>
 {% endblock %}
