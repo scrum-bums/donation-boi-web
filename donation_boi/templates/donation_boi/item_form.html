@@ -1,0 +1,37 @@
+{% extends "donation_boi/base.html" %}
+{% load semanticui %}
+{% block title %}Record donation{% endblock %}
+{% block content %}
+    <div class="eight wide column">
+        <h1>Record donation</h1>
+        <form class="ui form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+{#            <div class="required field">#}
+{#                <label>Store</label>#}
+{#                {{ form.store }}#}
+{#            </div>#}
+{#            <div class="required field">#}
+{#                <label>Name</label>#}
+{#                {{ form.name }}#}
+{#            </div>#}
+{#            <div class="required field">#}
+{#                <label>Short description</label>#}
+{#                {{ form.short_description }}#}
+{#            </div>#}
+{#            <div class="required field">#}
+{#                <label>Long description</label>#}
+{#                {{ form.long_description }}#}
+{#            </div>#}
+{#            <div class="required field">#}
+{#                <label>Price</label>#}
+{#                {{ form.price }}#}
+{#            </div>#}
+{#            <div class="required field">#}
+{#                <label>Category</label>#}
+{#                {{ form.category }}#}
+{#            </div>#}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}

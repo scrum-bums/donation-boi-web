@@ -25,6 +25,7 @@ urlpatterns = [
     path('', RedirectView.as_view(pattern_name='stores', permanent=True), name="home"),
     path('stores/<int:pk>', StoreDetailView.as_view(), name="store_detail"),
     path('stores', StoreList.as_view(), name="stores"),
+    path('items/<int:pk>', ItemDetailView.as_view(), name="item_detail"),
     path('login', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
     path('logout', auth_views.auth_logout, name="logout")
 ]

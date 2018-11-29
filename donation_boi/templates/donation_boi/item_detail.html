@@ -1,0 +1,18 @@
+{% extends "donation_boi/base.html" %}
+{% block title %}{{ item.name }}{% endblock %}
+{% block content %}
+    <div class="twelve wide column">
+        <h1>{{ item.name }} at <a href="{% url 'store_detail' pk=item.store.pk %}">{{ item.store.name }}</a> {% if perms.item.can_edit_item %}
+            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_change' object_id=item.pk %}">Edit item</a>
+        {% endif %}
+        {% if perms.store.can_delete_item %}
+            <a class="ui tiny basic button" href="{% url 'admin:donation_boi_item_delete' object_id=item.store.pk %}">Delete item</a>
+        {% endif %}</h1>
+        <ul>
+            <li><strong>Category: </strong>{{ item.get_category_display }}</li>
+            <li><strong>Description: </strong> {{ item.long_description }}</li>
+            <li><strong>Price: </strong> ${{ item.price }}</li>
+        </ul>
+        <em>As of: {{ item.updated_at }}</em>
+    </div>
+{% endblock %}
