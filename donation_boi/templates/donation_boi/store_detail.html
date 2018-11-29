@@ -1,21 +1,44 @@
 {% extends "donation_boi/base.html" %}
 {% block title %}Stores{% endblock %}
 {% block content %}
-    <div class="eight wide column">
-        <h1>{{ store.name }}</h1>
+    <div class="twelve wide column">
+        <h1>{{ store.name }} {% if perms.item.can_add_item %}
+            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_add' %}">Record donation</a>
+        {% endif %}
+        {% if perms.store.can_edit_store %}
+            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit
+                store</a>
+        {% endif %}
+        {% if perms.store.can_delete_store %}
+            <a class="ui tiny basic button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete store</a>
+        {% endif %}</h1>
         <ul>
             <li><strong>Location: </strong> {{ store.address }} ({{ store.location_type }})</li>
             <li><strong>URL: </strong> <a href="{{ store.website }}">{{ store.website }}</a></li>
             <li><strong>Phone number: </strong>{{ store.phone_number }}</li>
         </ul>
         <em>As of: {{ store.updated_at }}</em>
-    </div>
-    <div class="four wide column">
-        {% if perms.store.can_edit_store %}
-            <a class="ui button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit store</a>
-        {% endif %}
-        {% if perms.store.can_delete_store %}
-                <a class="ui button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete store</a>
-            {% endif %}
+
+        <h2>Inventory</h2>
+        <div class="ui three stackable cards">
+            {% for item in store.item_set.all %}
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            {{ item.name }}
+                        </div>
+                        <div class="meta">
+                            {{ item.get_category_display }}
+                        </div>
+                        <div class="description">
+                            {{ item.short_description }}
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a class="ui basic button" href="{% url 'item_detail' pk=item.pk %}">View details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

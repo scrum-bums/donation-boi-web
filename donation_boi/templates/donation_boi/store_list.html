@@ -2,16 +2,32 @@
 {% block title %}Stores{% endblock %}
 {% block content %}
     <div class="eight wide column">
-        <h1>Stores</h1>
-        <ul>
+        <h1>Stores {% if perms.store.can_add_store %}
+            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_add' %}">Add store</a>
+        {% endif %}</h1>
+
+        <div class="ui three stackable cards">
             {% for store in stores %}
-                <li><a href="{% url 'store_detail' pk=store.pk %}">{{ store.name }}</a></li>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">
+                            {{ store.name }}
+                        </div>
+                        <div class="meta">
+                            {{ store.location_type }}
+                        </div>
+                        <div class="description">
+                            {{ store.address }}
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a class="ui basic button" href="{% url 'store_detail' pk=store.pk %}">View details</a>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
     <div class="four wide column">
-        {% if perms.store.can_add_store %}
-            <a class="ui button primary" href="{% url 'admin:donation_boi_store_add' %}">Add store</a>
-        {% endif %}
+
     </div>
 {% endblock %}
