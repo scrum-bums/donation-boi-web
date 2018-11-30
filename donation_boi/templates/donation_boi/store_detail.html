@@ -4,10 +4,10 @@
 {% block content %}
     <div class="twelve wide column">
         <h1>{{ store.name }}
-            {% if request.user|has_group:"Location employee" %}
+            {% if request.user|has_group:"Location employee" or request.user|has_group:"Manager" or request.user|has_group:"Administrator" %}
             <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_add' %}">Record donation</a>
             {% endif %}
-            {% if request.user|has_group:"Manager" %}
+            {% if request.user|has_group:"Manager" or request.user|has_group:"Administrator" %}
             <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit
                 store</a>
             <a class="ui tiny basic button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete store</a>
