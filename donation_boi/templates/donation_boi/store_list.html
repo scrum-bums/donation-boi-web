@@ -7,6 +7,11 @@
             <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_add' %}">Add store</a>
         {% endif %}</h1>
 
+        <div>
+            <a class="ui primary button small basic" href="{% url 'search' %}">Search items</a>
+        </div>
+        <br/>
+
         <div class="ui three stackable cards">
             {% for store in stores %}
                 <div class="card">

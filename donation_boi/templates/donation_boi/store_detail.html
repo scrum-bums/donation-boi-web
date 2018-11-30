@@ -5,12 +5,15 @@
     <div class="twelve wide column">
         <h1>{{ store.name }}
             {% if request.user|has_group:"Location employee" or request.user|has_group:"Manager" or request.user|has_group:"Administrator" %}
-            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_add' %}">Record donation</a>
+                <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_add' %}">Record
+                    donation</a>
             {% endif %}
             {% if request.user|has_group:"Manager" or request.user|has_group:"Administrator" %}
-            <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit
-                store</a>
-            <a class="ui tiny basic button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete store</a>
+                <a class="ui tiny basic button primary"
+                   href="{% url 'admin:donation_boi_store_change' object_id=store.pk %}">Edit
+                    store</a>
+                <a class="ui tiny basic button" href="{% url 'admin:donation_boi_store_delete' object_id=store.pk %}">Delete
+                    store</a>
             {% endif %}</h1>
         <ul>
             <li><strong>Location: </strong> {{ store.address }} ({{ store.location_type }})</li>
@@ -18,9 +21,14 @@
             <li><strong>Phone number: </strong>{{ store.phone_number }}</li>
         </ul>
         <em>As of: {{ store.updated_at }}</em>
-    {{ True }}
-{% if "'donation_boi.add_item'" in perms.item %}hi{% endif %}
+
         <h2>Inventory</h2>
+
+        <div>
+            <a class="ui primary button small basic" href="{% url 'search' %}">Search items</a>
+        </div>
+        <br/>
+
         <div class="ui three stackable cards">
             {% for item in store.item_set.all %}
                 <div class="card">
