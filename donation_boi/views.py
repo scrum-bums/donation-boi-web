@@ -57,7 +57,7 @@ def search(request):
             store_id = ""
         item_category = request.GET.get("item_category", "")
         item_name = request.GET.get("item_name", "")
-        items = Item.objects.filter(category__contains=item_category, name__contains=item_name)
+        items = Item.objects.filter(category__icontains=item_category, name__icontains=item_name)
         print(store_id)
         if store_id != "":
             items = items.filter(store_id__exact=store_id)
