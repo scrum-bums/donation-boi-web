@@ -1,8 +1,9 @@
 {% extends "donation_boi/base.html" %}
+{% load auth_extras %}
 {% block title %}Stores{% endblock %}
 {% block content %}
     <div class="eight wide column">
-        <h1>Stores {% if perms.store.can_add_store %}
+        <h1>Stores {% if request.user|has_group:"Manager" %}
             <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_store_add' %}">Add store</a>
         {% endif %}</h1>
 

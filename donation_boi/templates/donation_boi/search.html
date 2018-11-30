@@ -1,0 +1,57 @@
+{% extends "donation_boi/base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+    <div class="twelve wide column">
+        {% if form %}
+            <h1>Search items</h1>
+            <form class="ui form" method="get" action="{% url 'search' %}">
+                <div class="field">
+                    <label>Store</label>
+                    {{ form.store }}
+                </div>
+                <div class="field">
+                    <label>Filter by item name</label>
+                    {{ form.item_name }}
+                </div>
+                <div class="field">
+                    <label>Filter by item category</label>
+                    {{ form.item_category }}
+                </div>
+                <input class="ui button large primary" type="submit">
+            </form>
+        {% else %}
+            <h1>Search results</h1>
+            <div>
+                <a class="ui primary button small basic" href="{% url 'search' %}">New search</a>
+            </div>
+            <br />
+            <div class="ui three stackable cards">
+                {% for item in items %}
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">
+                                {{ item.name }}
+                            </div>
+                            <div class="meta">
+                                <p>{{ item.store.name }}</p>
+                                <p>{{ item.get_category_display }}</p>
+                            </div>
+                            <div class="description">
+                                {{ item.short_description }}
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a class="ui basic button" href="{% url 'item_detail' pk=item.pk %}">View details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if not items %}
+                    <div class="ui info message">
+                        <p>No results found</p>
+                    </div>
+                {% endif %}
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}

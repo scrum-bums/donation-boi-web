@@ -1,11 +1,10 @@
 {% extends "donation_boi/base.html" %}
+{% load auth_extras %}
 {% block title %}{{ item.name }}{% endblock %}
 {% block content %}
     <div class="twelve wide column">
-        <h1>{{ item.name }} at <a href="{% url 'store_detail' pk=item.store.pk %}">{{ item.store.name }}</a> {% if perms.item.can_edit_item %}
+        <h1>{{ item.name }} at <a href="{% url 'store_detail' pk=item.store.pk %}">{{ item.store.name }}</a> {% if request.user|has_group:"Location employee" %}
             <a class="ui tiny basic button primary" href="{% url 'admin:donation_boi_item_change' object_id=item.pk %}">Edit item</a>
-        {% endif %}
-        {% if perms.store.can_delete_item %}
             <a class="ui tiny basic button" href="{% url 'admin:donation_boi_item_delete' object_id=item.store.pk %}">Delete item</a>
         {% endif %}</h1>
         <ul>
